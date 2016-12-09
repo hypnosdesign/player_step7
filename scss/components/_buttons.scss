@@ -3,7 +3,7 @@ button {
   outline: none;
   border: none;
   padding: 5px 8px;
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(0,0,0,1);
   color: #fafafa;
 }
 
@@ -23,7 +23,7 @@ div.speed-menu {
 
 div.speed-menu span {
   display: block;
-  background: green;
+  background: orange;
   width: 100%;
   margin: 3px 0;
   padding: 3px 0;
@@ -38,48 +38,8 @@ button.playbackrange:hover div.speed-menu {
 
 div.speed-menu span:hover {
   font-weight: bold;
+  background: darken(orange, 10%);
 }
-
-
-
-// ul.playbackrange {
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-//   display: inline-block;
-//   background: #ddd;
-//   border-radius: 5px;
-//   text-align: center;
-
-//   li {
-//     float: left;
-//     width: 80px;
-//     height: 40px;
-//     line-height: 40px;
-//     position: relative;
-//     text-transform: uppercase;
-//     font-size: 14px;
-//     color: rgba(0,0,0,0.7);
-//     cursor: pointer;
-//     border-radius: 5px;
-
-//     &:hover {
-//       background: #d5d5d5;
-//     }
-//   }
-// }
-
-// ul.speed-menu li {
-//   top: -160px;
-// }
-
-// ul.playbackrange li:hover > ul.speed-menu li {
-//   display: block;
-// }
-
-// ul.speed-menu li {
-//   display: none;
-// }
 
 
 p#text-track span {

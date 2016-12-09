@@ -22,6 +22,7 @@ playpauseBtn.addEventListener("click",
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
     } else {
       video.play();
+
       //playpauseBtn.innerHTML = "Pause";
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-play", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-pause", "fw");
@@ -36,19 +37,19 @@ function() {
   if(!video.muted){
     video.muted = true;
     //muteunmuteBtn.innerHTML = "unMute";
-     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
-      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
+    muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
+    muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
   } else if (video.muted == true && video.volume == 0){
     volumeBar.value = video.volume = 0.5;
     //muteunmuteBtn.innerHTML = "Mute";
     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
-      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
+    muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
     video.muted = false;
   } else{
     video.muted = false;
     //muteunmuteBtn.innerHTML = "Mute";
     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
-      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
+    muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
   }
 }, false);
 
@@ -58,11 +59,17 @@ volumeBar.addEventListener("change",
   function(){
     video.volume = volumeBar.value;
     if (video.volume == 0) {
+
       //muteunmuteBtn.innerHTML = "unMute";
+      muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
+    muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
       video.muted = true;
+
     } else {
       video.muted = false;
       //muteunmuteBtn.innerHTML = "Mute";
+      muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
+      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
     }
   }, false );
 
@@ -135,27 +142,28 @@ forwardBtn.addEventListener('click', function(){
   video.currentTime += 10;
 })
 
-
 function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f()}
 r(function(){
 
 // trackList Variables
-
-var videoTrack = video.textTracks[0];
-var videoCue = videoTrack.cues;
+var c_tracks = video.textTracks;
+var c_track = c_tracks[0];
+var cues = c_track.cues;
+var activeCues = c_track.activeCues;
 var htmlTrack = document.getElementById("text-track");
 var spanTrack = htmlTrack.getElementsByTagName('span');
+
 
 // LOAD CAPTIONS
 
 closecaptionsBtn.addEventListener("click",
   function() {
-    if(video.textTracks[0].mode == "disabled" ){
-      video.textTracks[0].mode = "showing";
+    if(c_track.mode == "disabled" ){
+      c_track.mode = "showing";
       closecaptionsBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-file-text-o", "fw");
       closecaptionsBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-file-text", "fw");
     } else{
-      video.textTracks[0].mode = "disabled";
+      c_track.mode = "disabled";
       closecaptionsBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-file-text", "fw");
       closecaptionsBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-file-text-o", "fw");
     }
@@ -171,8 +179,8 @@ function print(message, el) {
 function getCues() {
 
   report = '<p>';
-  for (var i = 0; i < videoCue.length; i++) {
-    report += '<span class="cue" data-time="'+ videoCue[i].startTime +'"> '+ videoCue[i].text +'</span>';
+  for (var i = 0; i < cues.length; i++) {
+    report += '<span class="cue" data-time="'+ cues[i].startTime +'"> '+ cues[i].text +'</span>';
   } 
   report += '</p>';
   return report;
@@ -234,6 +242,10 @@ fullscreenBtn.addEventListener("click",
 function() {
   if (!document.fullscreenElement &&
       !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {
+    this.getElementsByTagName('i')[0].classList.remove("fa", "fa-expand", "fw");
+    this.getElementsByTagName('i')[0].classList.add("fa", "fa-compress", "fw");
+    videoWrapper.style.width = "100%";
+    video.style.width = "100%";
     if (videoWrapper.requestFullscreen) {
       videoWrapper.requestFullscreen();
     } else if (videoWrapper.msRequestFullscreen) {
@@ -245,14 +257,47 @@ function() {
     }
   } else {
     if (document.exitFullscreen) {
+      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
+      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
+    videoWrapper.style.width = "739px";
+    video.style.width = "739px";
       document.exitFullscreen();
     } else if (document.msExitFullscreen) {
       document.msExitFullscreen();
+      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
+      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
+      videoWrapper.style.width = "739px";
+      video.style.width = "739px";
     } else if (document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
+      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
+      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
+      videoWrapper.style.width = "739px";
+      video.style.width = "739px";
     } else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
+      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
+      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
+      videoWrapper.style.width = "739px";
+      video.style.width = "739px";
     }
   }
 }, false );
 
+
+videoWrapper.addEventListener('mouseenter', function(){
+  playerWrapper.style.display = "block";
+  controllersWrapper.style.display = "block";
+  playerWrapper.classList.remove("player-wrapper-only");
+});
+
+playerWrapper.addEventListener('mouseenter', function(){
+  this.style.display = "block";
+  controllersWrapper.style.display = "block";
+  this.classList.remove("player-wrapper-only");
+});
+
+videoWrapper.addEventListener('mouseleave', function(){
+  controllersWrapper.style.display = "none";
+  playerWrapper.classList.add("player-wrapper-only");
+});

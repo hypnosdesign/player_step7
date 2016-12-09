@@ -9,44 +9,53 @@
 <body>
 
   <section class="main-wrapper">
-    <div class="video-wrapper">
-      <video class="video">
-        <source src="video/video.mp4" type="video/mp4">
-        <source src="video/video.ogg" type="video/ogg">
-        <track id="track" kind="captions" src="video/captions.vtt" srclang="en" default>
-      </video>
-    </div> <!-- end video-wrapper -->
+    <div class="media-wrapper">
+      
+      <div class="video-wrapper">
+        <video class="video">
+          <source src="video/video.mp4" type="video/mp4">
+          <source src="video/video.ogg" type="video/ogg">
+          <track id="track" kind="captions" src="video/captions.vtt" srclang="en" default>
+        </video>
+      </div> <!-- end video-wrapper -->
 
-    <article class="player-wrapper">
+      <article class="player-wrapper">
 
 
-        <div class="time-controllers">
-          <input class="seektimeduration" type="range" value="0">
-          <div class="timeduration">00:00/00:00</div>
-          <div class="seek"></div>
-        </div> <!-- end .time-controllers -->
-
-        <div class="controllers">
-          <button class="playpause"><i></i></button>
-          <button class="backward"><i class="fa fa-step-backward fw"></i> 10 sec</button>
-          <button class="stop"><i class="fa fa-stop fw"></i></button>
-          <button class="forward">10 Sec <i class="fa fa-step-forward fw"></i></button>
-          <button class="playbackrange">
-            Speed
-              <div class="speed-menu">
-                <span>2X</span>
-                <span>1X</span>
-                <span>0.5X</span>
-              </div>
-          </button>
-          <button class="muteunmute"><i></i></button>
+          <div class="time-controllers">
+            <input class="seektimeduration" type="range" value="0">
+            <div class="timeduration">00:00/00:00</div>
+            <div class="seek"></div>
+          </div> <!-- end .time-controllers -->
           
 
-          <button class="closecaptions"><i></i></button>
-          <button class="fullscreen"><i class="fa fa-expand fw"></i></button>
-          <input class="volumebar" type="range" value="0.5" min="0" max="1" step="0.1">
-        </div> <!-- end controllers -->
+          <div class="controllers">
+            <div class="controllers-left">
+              <button class="playpause"><i></i></button>
+              <button class="backward"><i class="fa fa-step-backward fw"></i> 10 sec</button>
+              <button class="stop"><i class="fa fa-stop fw"></i></button>
+              <button class="forward">10 Sec <i class="fa fa-step-forward fw"></i></button>
+              <button class="playbackrange">
+                Speed
+                  <div class="speed-menu">
+                    <span>2X</span>
+                    <span>1X</span>
+                    <span>0.5X</span>
+                  </div>
+              </button>
+            </div><!-- /.controllers-left -->
 
+            <div class="controllers-right">
+              <button class="muteunmute"><i></i></button>
+              <input class="volumebar" type="range" value="0.5" min="0" max="1" step="0.1">
+              <button class="closecaptions"><i></i></button>
+              <button class="fullscreen"><i class="fa fa-expand fw"></i></button>
+            </div><!-- /.controllers-right -->
+
+              
+            
+          </div> <!-- end controllers -->
+      </div><!-- /.media-wrapper -->
 
     </article> <!-- end .player-wrapper -->
       <section>

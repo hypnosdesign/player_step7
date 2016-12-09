@@ -5,32 +5,33 @@
 // MIT License
 
 $track-color: #424242 !default;
-$thumb-color: #555bc8 !default;
+$thumb-color: orange !default;
 //
 // $thumb-radius: 8px !default;
-$thumb-radius: 2px !default;
+$thumb-radius: 100% !default;
 // $thumb-height: 30px !default;
-$thumb-height: 8px !default;
-// $thumb-width: 30px !default;
+$thumb-height: 13px !default;
+$thumb-width: 13px !default;
 $thumb-width: 4px !default;
 $thumb-shadow-size: 0px !default;
 $thumb-shadow-blur: 0px !default;
 $thumb-shadow-color: #111 !default;
 $thumb-border-width: 0px !default;
-$thumb-border-color: #fff !default;
+// $thumb-border-color: #fff !default;
+$thumb-border-color: inherit !default;
 //
 // $track-width: 100% !default;
 $track-width: 80% !default;
-// $track-height: 10px !default;
 $track-height: 6px !default;
+//$track-height: 6px !default;
 $track-shadow-size: 0px !default;
 $track-shadow-blur: 0px !default;
-$track-shadow-color: #222 !default;
+$track-shadow-color: #000 !default;
 $track-border-width: 0px !default;
 $track-border-color: #000 !default;
 //
 // $track-radius: 5px !default;
-$track-radius: 2px !default;
+$track-radius: 0px !default;
 $contrast: 5% !default;
 
 @mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
