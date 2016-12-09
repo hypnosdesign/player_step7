@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Javascript Player | Threehouse Techdegree Step 7</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <section class="main-wrapper">
+    <div class="video-wrapper">
+      <video class="video">
+        <source src="video/video.mp4" type="video/mp4">
+        <source src="video/video.ogg" type="video/ogg">
+        <track id="track" kind="captions" src="video/captions.vtt" srclang="en" default>
+      </video>
+    </div> <!-- end video-wrapper -->
+
+    <article class="player-wrapper">
+
+
+        <div class="time-controllers">
+          <input class="seektimeduration" type="range" value="0">
+          <div class="timeduration">00:00/00:00</div>
+          <div class="seek"></div>
+        </div> <!-- end .time-controllers -->
+
+        <div class="controllers">
+          <button class="stop">Stop</button>
+          <button class="backward">Backward 10 sec</button>
+          <button class="playpause">Play/Pause</button>
+          <button class="forward">Forward 10 Sec</button>
+          <button class="muteunmute">Mute/Unmute</button>
+          
+
+          <button class="playbackrange">
+            Speed
+              <div class="speed-menu">
+                <span>2X</span>
+                <span>1X</span>
+                <span>0.5X</span>
+              </div>
+            
+          </button>
+
+          <button class="closecaptions">Captions</button>
+          <button class="fullscreen">Fullscreen</button>
+          <input class="volumebar" type="range" value="0.5" min="0" max="1" step="0.1">
+        </div> <!-- end controllers -->
+
+
+    </article> <!-- end .player-wrapper -->
+      <section>
+        <p id="text-track"> Caricamento...</p>
+      </section>
+  </section>
+
+
+
+  <footer>
+    <p>made with <3 by Mattia Piano </p>
+  </footer>
+
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

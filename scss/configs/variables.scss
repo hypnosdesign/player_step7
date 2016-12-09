@@ -1,0 +1,24 @@
+//Colors
+$primary-color      : #FAFAFA;
+$text-color         : #4A4A4A;
+$light-color        : #EEE;
+$middlegrey-color   : #888;
+
+// font-stack
+$stack-sans-serif   : Helvetica, Arial, sans-serif;
+$stack-open-sans    : 'Open Sans', $stack-sans-serif;
+
+// font-sizes
+$font-base-size     : 16px;
+$font-large-size    : 2em;
+$font-medium-size   : 1.5em;
+$font-small-size    : 0.6em;
+
+
+
+//assets
+$path-font          : '../fonts';
+
+// media queries
+$brake-narrow       : 768px;
+$brake-wide         : 1024px;

@@ -1,0 +1,93 @@
+button {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 5px 8px;
+  background-color: rgba(0,0,0,.8);
+  color: #fafafa;
+}
+
+button.playbackrange {
+  position: relative;
+}
+
+div.speed-menu {
+  position: absolute;
+  width: 100%;
+  bottom: 22px;
+  left: 0;
+  display: block;
+  opacity: 0;
+  transition: opacity .3s ease-in;
+}
+
+div.speed-menu span {
+  display: block;
+  background: green;
+  width: 100%;
+  margin: 3px 0;
+  padding: 3px 0;
+  cursor: pointer;  
+}
+
+button.playbackrange:hover div.speed-menu {
+  opacity: 1;
+  transition: opacity .3s ease-in;
+  
+}
+
+div.speed-menu span:hover {
+  font-weight: bold;
+}
+
+
+
+// ul.playbackrange {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+//   display: inline-block;
+//   background: #ddd;
+//   border-radius: 5px;
+//   text-align: center;
+
+//   li {
+//     float: left;
+//     width: 80px;
+//     height: 40px;
+//     line-height: 40px;
+//     position: relative;
+//     text-transform: uppercase;
+//     font-size: 14px;
+//     color: rgba(0,0,0,0.7);
+//     cursor: pointer;
+//     border-radius: 5px;
+
+//     &:hover {
+//       background: #d5d5d5;
+//     }
+//   }
+// }
+
+// ul.speed-menu li {
+//   top: -160px;
+// }
+
+// ul.playbackrange li:hover > ul.speed-menu li {
+//   display: block;
+// }
+
+// ul.speed-menu li {
+//   display: none;
+// }
+
+
+p#text-track span {
+  transition: all .5s ease-in;
+  color: black;
+}
+p#text-track span:hover {
+  color: orange;
+  cursor: pointer;
+  transition: all .3s ease-in;
+}

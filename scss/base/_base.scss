@@ -1,0 +1,8 @@
+* { box-sizing: border-box; }
+
+body,html {
+	font-family: $stack-open-sans;
+	font-size: $font-base-size;
+	background-color: $primary-color;
+	color: $text-color;
+}

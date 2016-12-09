@@ -1,0 +1,55 @@
+video,
+div.video-wrapper {
+  margin: 0 auto;
+  width: 739px;
+  height: auto;
+  max-width: 100%;
+}
+
+.player-wrapper {
+  width: 739px;
+  max-width: 100%;
+  padding: 1em;
+  position: relative;
+  background: rgba(0,0,0,.4);
+  bottom: 100px;
+  margin: 0 auto;
+  font-size: $font-small-size;
+  z-index: 2147483647;
+}
+
+
+.time-controllers {
+@include clearfix;
+display: block;
+}
+
+.timeduration {
+  float: right;
+}
+
+input.seektimeduration {
+  width: 80%;
+  margin:0;
+  padding: 0;
+}
+
+div.seek {
+  height: 5px;
+  background-color: black;
+  width: 0px;
+  border: 1px solid grey;
+  padding: 0;
+  margin: 0 0 5px;
+  position: relative;
+  top: -3px;
+
+}
+
+p#text-track {
+  width: 739px;
+  max-width: 95%;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 24px;
+}
