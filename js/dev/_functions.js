@@ -22,7 +22,6 @@ playpauseBtn.addEventListener("click",
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
     } else {
       video.play();
-
       //playpauseBtn.innerHTML = "Pause";
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-play", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-pause", "fw");
@@ -39,7 +38,7 @@ function() {
     //muteunmuteBtn.innerHTML = "unMute";
     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
     muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
-  } else if (video.muted == true && video.volume == 0){
+  } else if (video.muted === true && video.volume === 0){
     volumeBar.value = video.volume = 0.5;
     //muteunmuteBtn.innerHTML = "Mute";
     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
@@ -58,13 +57,12 @@ function() {
 volumeBar.addEventListener("change",
   function(){
     video.volume = volumeBar.value;
-    if (video.volume == 0) {
+    if (video.volume === 0) {
 
       //muteunmuteBtn.innerHTML = "unMute";
       muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
     muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
       video.muted = true;
-
     } else {
       video.muted = false;
       //muteunmuteBtn.innerHTML = "Mute";
@@ -82,7 +80,6 @@ video.addEventListener("timeupdate",
     timeduration.innerHTML = getTime();
     if (video.ended) {
       //playpauseBtn.innerHTML = "reload";
-
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-refresh", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-play", "fa-pause");
     }
@@ -117,7 +114,7 @@ function getTime() {
     else { html += durationsSec; }
 
   return html;
-};
+}
 
 // STOP
 
@@ -140,16 +137,15 @@ backwardBtn.addEventListener('click', function(){
 });
 forwardBtn.addEventListener('click', function(){
   video.currentTime += 10;
-})
+});
 
-function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f()}
+function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f();}
 r(function(){
 
 // trackList Variables
 var c_tracks = video.textTracks;
 var c_track = c_tracks[0];
 var cues = c_track.cues;
-var activeCues = c_track.activeCues;
 var htmlTrack = document.getElementById("text-track");
 var spanTrack = htmlTrack.getElementsByTagName('span');
 
@@ -158,7 +154,7 @@ var spanTrack = htmlTrack.getElementsByTagName('span');
 
 closecaptionsBtn.addEventListener("click",
   function() {
-    if(c_track.mode == "disabled" ){
+    if(c_track.mode === "disabled" ){
       c_track.mode = "showing";
       closecaptionsBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-file-text-o", "fw");
       closecaptionsBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-file-text", "fw");
@@ -167,7 +163,6 @@ closecaptionsBtn.addEventListener("click",
       closecaptionsBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-file-text", "fw");
       closecaptionsBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-file-text-o", "fw");
     }
-    console.log(video.textTracks[0].mode)
   }, false );
 
 //print a message in element
@@ -194,7 +189,7 @@ for (var i = 0; i < spanTrack.length; i++) {
     var self = this;
     var startTime = self.getAttribute('data-time');
     video.currentTime = startTime;
-  })
+  });
 
 }
 

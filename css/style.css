@@ -544,20 +544,11 @@ ol, ul {
 .fa-stop:before {
   content: ""; }
 
-.fa-forward:before {
-  content: ""; }
-
-.fa-fast-forward:before {
-  content: ""; }
-
 .fa-step-forward:before {
   content: ""; }
 
 .fa-step-backward:before {
   content: ""; }
-
-.fa-eject:before {
-  content: ""; }
 
 .fa-expand:before {
   content: ""; }
@@ -571,9 +562,6 @@ ol, ul {
 .fa-volume-off:before {
   content: ""; }
 
-.fa-volume-down:before {
-  content: ""; }
-
 .fa-volume-up:before {
   content: ""; }
 
@@ -582,6 +570,9 @@ ol, ul {
 
 .fa-file-text:before {
   content: ""; }
+
+.fa-heart:before {
+  content: ""; }
 
 .sr-only {
   position: absolute;
@@ -711,7 +702,7 @@ body, html {
   font-style: normal;
   src: url("../fonts/Open-Sans-700/Open-Sans-700.eot");
   src: url("../fonts/Open-Sans-700/Open-Sans-700.eot?#iefix") format("embedded-opentype"), url("../fonts/Open-Sans-700/Open-Sans-700.woff2") format("woff2"), url("../fonts/Open-Sans-700/Open-Sans-700.woff") format("woff"), url("../fonts/Open-Sans-700/Open-Sans-700.ttf") format("truetype"), url("../fonts/Open-Sans-700/Open-Sans-700.svg#OpenSans") format("svg"); }
-button {
+button, .playbackrange {
   background: none;
   outline: none;
   border: none;
@@ -719,8 +710,9 @@ button {
   background-color: black;
   color: #fafafa; }
 
-button.playbackrange {
-  position: relative; }
+div.playbackrange {
+  position: relative;
+  display: inline-block; }
 
 div.speed-menu {
   position: absolute;
@@ -738,9 +730,10 @@ div.speed-menu span {
   width: 100%;
   margin: 3px 0;
   padding: 3px 0;
-  cursor: pointer; }
+  cursor: pointer;
+  text-align: center; }
 
-button.playbackrange:hover div.speed-menu {
+div.playbackrange:hover div.speed-menu {
   opacity: 1;
   -webkit-transition: opacity .3s ease-in;
   transition: opacity .3s ease-in; }
@@ -824,7 +817,6 @@ div.seek {
   padding: 0;
   margin: 0 0 5px;
   position: relative;
-  top: -8px;
   z-index: -1; }
 
 p#text-track {

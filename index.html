@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <section class="main-wrapper">
+  <div class="main-wrapper">
     <div class="media-wrapper">
       
       <div class="video-wrapper">
@@ -19,7 +19,7 @@
         </video>
       </div> <!-- end video-wrapper -->
 
-      <article class="player-wrapper">
+      <div class="player-wrapper">
 
 
           <div class="time-controllers">
@@ -35,14 +35,14 @@
               <button class="backward"><i class="fa fa-step-backward fw"></i> 10 sec</button>
               <button class="stop"><i class="fa fa-stop fw"></i></button>
               <button class="forward">10 Sec <i class="fa fa-step-forward fw"></i></button>
-              <button class="playbackrange">
+              <div class="playbackrange">
                 Speed
                   <div class="speed-menu">
                     <span>2X</span>
                     <span>1X</span>
                     <span>0.5X</span>
                   </div>
-              </button>
+              </div>
             </div><!-- /.controllers-left -->
 
             <div class="controllers-right">
@@ -55,18 +55,19 @@
               
             
           </div> <!-- end controllers -->
-      </div><!-- /.media-wrapper -->
+      
 
-    </article> <!-- end .player-wrapper -->
-      <section>
+    </div> <!-- end .player-wrapper -->
+    </div><!-- /.media-wrapper -->
+      <div>
         <p id="text-track"> Caricamento...</p>
-      </section>
-  </section>
+      </div>
+  </div>
 
 
 
   <footer>
-    <p>made with <3 by Mattia Piano </p>
+    <p>made with <i class="fa fa-heart"></i> by Mattia Piano </p>
   </footer>
 
   <script type="text/javascript" src="js/app.js"></script>

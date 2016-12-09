@@ -1,4 +1,4 @@
-button {
+button, .playbackrange {
   background: none;
   outline: none;
   border: none;
@@ -7,8 +7,9 @@ button {
   color: #fafafa;
 }
 
-button.playbackrange {
+div.playbackrange {
   position: relative;
+  display: inline-block;
 }
 
 div.speed-menu {
@@ -28,9 +29,10 @@ div.speed-menu span {
   margin: 3px 0;
   padding: 3px 0;
   cursor: pointer;  
+  text-align: center;
 }
 
-button.playbackrange:hover div.speed-menu {
+div.playbackrange:hover div.speed-menu {
   opacity: 1;
   transition: opacity .3s ease-in;
   
