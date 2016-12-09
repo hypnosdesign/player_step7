@@ -9,7 +9,6 @@
     video.controls = true;
     mainWrapper.innerHTML = "<p>It seems your browser doesn't support HTML5 video tag. Please update it!</p>";
   }
-
 }());
 
 // PLAY / PAUSE
@@ -17,10 +16,16 @@ playpauseBtn.addEventListener("click",
   function() {
     if(!video.paused){
       video.pause();
-      playpauseBtn.innerHTML = "Play";
+      //playpauseBtn.innerHTML = "Play";
+      playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-pause", "fw");
+      playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-play", "fw");
+      playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
     } else {
       video.play();
-      playpauseBtn.innerHTML = "Pause";
+      //playpauseBtn.innerHTML = "Pause";
+      playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-play", "fw");
+      playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-pause", "fw");
+      playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
     }
   }, false);
 
@@ -30,14 +35,20 @@ muteunmuteBtn.addEventListener("click",
 function() {
   if(!video.muted){
     video.muted = true;
-    muteunmuteBtn.innerHTML = "unMute";
+    //muteunmuteBtn.innerHTML = "unMute";
+     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
+      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
   } else if (video.muted == true && video.volume == 0){
     volumeBar.value = video.volume = 0.5;
-    muteunmuteBtn.innerHTML = "Mute";
+    //muteunmuteBtn.innerHTML = "Mute";
+    muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
+      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
     video.muted = false;
   } else{
     video.muted = false;
-    muteunmuteBtn.innerHTML = "Mute";
+    //muteunmuteBtn.innerHTML = "Mute";
+    muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
+      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
   }
 }, false);
 
@@ -47,11 +58,11 @@ volumeBar.addEventListener("change",
   function(){
     video.volume = volumeBar.value;
     if (video.volume == 0) {
-      muteunmuteBtn.innerHTML = "unMute";
+      //muteunmuteBtn.innerHTML = "unMute";
       video.muted = true;
     } else {
       video.muted = false;
-      muteunmuteBtn.innerHTML = "Mute";
+      //muteunmuteBtn.innerHTML = "Mute";
     }
   }, false );
 
@@ -63,7 +74,10 @@ video.addEventListener("timeupdate",
     seekTimeDuration.value = percentual;
     timeduration.innerHTML = getTime();
     if (video.ended) {
-      playpauseBtn.innerHTML = "reload";
+      //playpauseBtn.innerHTML = "reload";
+
+      playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-refresh", "fw");
+      playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-play", "fa-pause");
     }
   }, false);
 
@@ -104,7 +118,9 @@ stopBtn.addEventListener("click",
   function(){
     video.pause();
     video.currentTime = 0;
-    playpauseBtn.innerHTML = "Play";
+    //playpauseBtn.innerHTML = "Play";
+     playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-pause", "fw");
+      playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-play", "fw");
   }, false );
 
 // SKIP
@@ -136,8 +152,12 @@ closecaptionsBtn.addEventListener("click",
   function() {
     if(video.textTracks[0].mode == "disabled" ){
       video.textTracks[0].mode = "showing";
+      closecaptionsBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-file-text-o", "fw");
+      closecaptionsBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-file-text", "fw");
     } else{
       video.textTracks[0].mode = "disabled";
+      closecaptionsBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-file-text", "fw");
+      closecaptionsBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-file-text-o", "fw");
     }
     console.log(video.textTracks[0].mode)
   }, false );
@@ -175,7 +195,8 @@ for (var i = 0; i < spanTrack.length; i++) {
 // Playback Rate
 
 playbackrange2xBtn.addEventListener('click',
-  function() { video.playbackRate = 2.0; }, false );
+  function() { 
+    video.playbackRate = 2.0; }, false );
 
 playbackrange1xBtn.addEventListener('click',
   function() { video.playbackRate = 1.0; }, false );

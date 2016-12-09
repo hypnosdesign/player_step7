@@ -11,10 +11,12 @@ var controllersWrapper = document.querySelector('.controllers');
 var backwardBtn = document.querySelector('button.backward');
 var playpauseBtn = document.querySelector('button.playpause');
 var forwardBtn = document.querySelector('button.forward');
-playpauseBtn.innerHTML = "Play";
+//playpauseBtn.innerHTML = "Play";
+playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-play", "fw");
 var stopBtn = document.querySelector('button.stop');
 var muteunmuteBtn = document.querySelector('button.muteunmute')
-muteunmuteBtn.innerHTML = "Mute";
+//muteunmuteBtn.innerHTML = "Mute";
+muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
 var volumeBar = document.querySelector('.volumebar');
 
 // palybackrange
@@ -25,6 +27,7 @@ var playbackrange05xBtn = document.querySelector(".speed-menu span:nth-child(3)"
 
 
 var closecaptionsBtn = document.querySelector('button.closecaptions');
+closecaptionsBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-file-text", "fw");
 var fullscreenBtn = document.querySelector('button.fullscreen');
 
 var seektime = document.querySelector('div.seek');
