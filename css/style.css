@@ -765,7 +765,8 @@ div.video-wrapper {
   width: 739px;
   margin: 0;
   padding: 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  max-width: 100%; }
 
 .player-wrapper {
   width: 100%;
@@ -793,7 +794,7 @@ div.video-wrapper {
     -webkit-transition: height 1s;
     transition: height 1s; }
     .player-wrapper .seekbars .seek-time {
-      width: 50%;
+      width: 0%;
       height: 100%;
       background-color: orange;
       position: absolute;
@@ -883,4 +884,5 @@ p#text-track {
 ---------------------------
 ***************************/
 footer {
-  padding: 1.6em 6%; }
+  padding: 1.6em 6%;
+  text-align: center; }

@@ -15,18 +15,38 @@ playpauseBtn.addEventListener("click",
   function() {
     if(!video.paused){
       video.pause();
-
+      clearInterval(interval);
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-pause", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-play", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
     } else {
       video.play();
-
+      interval = setInterval(updatePlayer, 30);
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-play", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-pause", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
     }
   }, false);
+
+// SEEK BAR
+
+function updatePlayer(){
+  var percentage = (video.currentTime / video.duration) * 100;
+  seekTime.style.width = percentage + "%";
+  if(video.ended) {
+    clearInterval(interval);
+  }
+}
+
+timeControllers.addEventListener("click", function(e){
+  var mouseX = e.pageX - videoWrapper.offsetParent.offsetLeft;
+  var width = window.getComputedStyle(controllers).width;
+  width = parseInt(width);
+  video.currentTime = (mouseX / width) * video.duration;
+  updatePlayer();
+  console.log(mouseX);
+  console.log(width);
+}, false)
 
 // MUTE / UNMUTE / VOLUME
 
@@ -34,12 +54,11 @@ muteunmuteBtn.addEventListener("click",
 function() {
   if(!video.muted){
     video.muted = true;
-    //muteunmuteBtn.innerHTML = "unMute";
+    //"unMute";
     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
     muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
   } else if (video.muted === true && video.volume === 0){
-    volumeBar.value = video.volume = 0.5;
-    //muteunmuteBtn.innerHTML = "Mute";
+    //"Mute";
     muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
     muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
     video.muted = false;
@@ -51,31 +70,29 @@ function() {
   }
 }, false);
 
-// VOLUME
+// VOLUME da vedere
 
 volumeBar.addEventListener("change",
   function(){
-    video.volume = volumeBar.value;
     if (video.volume === 0) {
 
-      //muteunmuteBtn.innerHTML = "unMute";
+      //"unMute";
       muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
-    muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
+      muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
       video.muted = true;
     } else {
-      video.muted = false;
-      //muteunmuteBtn.innerHTML = "Mute";
+      
+      //"Mute";
       muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
       muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
+      video.muted = false;
     }
   }, false );
 
-// TIME FUNCTIONS
+// TIME FUNCTIONS da vedere
 
 video.addEventListener("timeupdate",
   function(){
-    var percentual = video.currentTime / video.duration * 100;
-    seekTimeDuration.value = percentual;
     timeduration.innerHTML = getTime();
     if (video.ended) {
       //playpauseBtn.innerHTML = "reload";
@@ -84,12 +101,6 @@ video.addEventListener("timeupdate",
     }
   }, false);
 
-seekTimeDuration.addEventListener("change",
-    function(){
-      var videoTime = seekTimeDuration.value * video.duration / 100;
-      video.currentTime = videoTime;
-    }
-);
 
 function getTime() {
   var seconds = Math.floor( video.currentTime );
@@ -133,9 +144,11 @@ backwardBtn.addEventListener('click', function(){
   } else {
     video.currentTime += -10;
   }
+  updatePlayer();
 });
 forwardBtn.addEventListener('click', function(){
   video.currentTime += 10;
+  updatePlayer();
 });
 
 function r(f){/in/.test(document.readyState)?setTimeout(r,9,f):f();}
@@ -224,7 +237,7 @@ video.addEventListener('progress',
       var bufferedEnd = video.buffered.end(video.buffered.length - 1);
       var duration =  video.duration;
       if (duration > 0) {
-        seektime.style.width = ((bufferedEnd / duration)*100) + "%";
+        seekBuffer.style.width = ((bufferedEnd / duration)*100) + "%";
       }
     }
   }, false );
@@ -236,10 +249,6 @@ fullscreenBtn.addEventListener("click",
 function() {
   if (!document.fullscreenElement &&
       !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {
-    this.getElementsByTagName('i')[0].classList.remove("fa", "fa-expand", "fw");
-    this.getElementsByTagName('i')[0].classList.add("fa", "fa-compress", "fw");
-    videoWrapper.style.width = "100%";
-    video.style.width = "100%";
     if (videoWrapper.requestFullscreen) {
       videoWrapper.requestFullscreen();
     } else if (videoWrapper.msRequestFullscreen) {
@@ -251,47 +260,13 @@ function() {
     }
   } else {
     if (document.exitFullscreen) {
-      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
-      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
-    videoWrapper.style.width = "739px";
-    video.style.width = "739px";
       document.exitFullscreen();
     } else if (document.msExitFullscreen) {
       document.msExitFullscreen();
-      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
-      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
-      videoWrapper.style.width = "739px";
-      video.style.width = "739px";
     } else if (document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
-      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
-      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
-      videoWrapper.style.width = "739px";
-      video.style.width = "739px";
     } else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
-      this.getElementsByTagName('i')[0].classList.remove("fa", "fa-compress", "fw");
-      this.getElementsByTagName('i')[0].classList.add("fa", "fa-expand", "fw");
-      videoWrapper.style.width = "739px";
-      video.style.width = "739px";
     }
   }
 }, false );
-
-
-videoWrapper.addEventListener('mouseenter', function(){
-  playerWrapper.style.display = "block";
-  controllersWrapper.style.display = "block";
-  playerWrapper.classList.remove("player-wrapper-only");
-});
-
-playerWrapper.addEventListener('mouseenter', function(){
-  this.style.display = "block";
-  controllersWrapper.style.display = "block";
-  this.classList.remove("player-wrapper-only");
-});
-
-videoWrapper.addEventListener('mouseleave', function(){
-  controllersWrapper.style.display = "none";
-  playerWrapper.classList.add("player-wrapper-only");
-});
