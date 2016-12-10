@@ -21,51 +21,47 @@
 
       <div class="player-wrapper">
 
+        <div class="time-controllers">
+          <div class="seekbars">
+            <div class="seek-time"></div>
+            <div class="seek-buffer"></div>
+          </div><!-- /.seekbar -->
+        </div> <!-- end .time-controllers -->
 
-          <div class="time-controllers">
-            <input class="seektimeduration" type="range" value="0">
+        <div class="controllers">
+          <div class="controllers-left">
+            <button class="playpause"><i></i></button>
+            <button class="backward"><i class="fa fa-step-backward fw"></i> 10 sec</button>
+            <button class="stop"><i class="fa fa-stop fw"></i></button>
+            <button class="forward">10 Sec <i class="fa fa-step-forward fw"></i></button>
+            <div class="playbackrange">
+              Speed
+                <div class="speed-menu">
+                  <span>2X</span>
+                  <span>1X</span>
+                  <span>0.5X</span>
+                </div>
+            </div>
+            <button class="muteunmute"><i></i></button>
+            <div class="volumebar">
+              <div class="seek-volumebar"></div>
+            </div>
             <div class="timeduration">00:00/00:00</div>
-            <div class="seek"></div>
-          </div> <!-- end .time-controllers -->
-          
-
-          <div class="controllers">
-            <div class="controllers-left">
-              <button class="playpause"><i></i></button>
-              <button class="backward"><i class="fa fa-step-backward fw"></i> 10 sec</button>
-              <button class="stop"><i class="fa fa-stop fw"></i></button>
-              <button class="forward">10 Sec <i class="fa fa-step-forward fw"></i></button>
-              <div class="playbackrange">
-                Speed
-                  <div class="speed-menu">
-                    <span>2X</span>
-                    <span>1X</span>
-                    <span>0.5X</span>
-                  </div>
-              </div>
-            </div><!-- /.controllers-left -->
-
-            <div class="controllers-right">
-              <button class="muteunmute"><i></i></button>
-              <input class="volumebar" type="range" value="0.5" min="0" max="1" step="0.1">
-              <button class="closecaptions"><i></i></button>
-              <button class="fullscreen"><i class="fa fa-expand fw"></i></button>
-            </div><!-- /.controllers-right -->
-
-              
+          </div><!-- /.controllers-left -->
+          <div class="controllers-right">
             
-          </div> <!-- end controllers -->
-      
+            <button class="closecaptions"><i></i></button>
+            <button class="fullscreen"><i class="fa fa-expand fw"></i></button>
+          </div><!-- /.controllers-right -->
+        </div> <!-- end controllers -->
 
-    </div> <!-- end .player-wrapper -->
+      </div> <!-- end .player-wrapper -->
+
     </div><!-- /.media-wrapper -->
-      <div>
-        <p id="text-track"> Caricamento...</p>
-      </div>
-  </div>
-
-
-
+    <div>
+      <p id="text-track"> Caricamento...</p>
+    </div>
+  </div> <!-- /.media-wrapper -->
   <footer>
     <p>made with <i class="fa fa-heart"></i> by Mattia Piano </p>
   </footer>

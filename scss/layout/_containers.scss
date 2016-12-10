@@ -8,72 +8,176 @@ div.video-wrapper {
 
 .media-wrapper {
   position: relative;
+  width: 739px;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .player-wrapper {
-  //display: none;
-  width: 550px;
-  max-width: 100%;
-  padding: 1.2em;
+  width: 100%;
+  background: rgba(0,0,0,.7);
+  //border: 1px solid red;
+  margin: 0 auto;
+  font-size: $font-base-size;
   position: absolute;
-  background: rgba(255,255,255,.9);
-  bottom: 1em;
-  left: 50%;
-  margin: 0 auto;
-  transform: translateX(-50%);
-  font-size: $font-small-size;
+  bottom: 3px;
   z-index: 2147483647;
-  transition: all 4ms ease-in;
-  @include clearfix;
-  border-radius: 10px;
-  transition: all 4ms ease-in;
-  -webkit-transition: all 4ms ease-in;
-}
-
-.player-wrapper-only {
-  width: 739px;
-  bottom: 5px;
-  padding: 6px 20px 0px 20px;
-  border-radius: 0px;
-  transition: all 4ms ease-in;
-  -webkit-transition: all 4ms ease-in;
-}
-
-.time-controllers {
-  @include clearfix;
-  display: block;
-}
-
-.timeduration {
-  float: right;
-}
-
-input.seektimeduration {
-  width: 80%;
-  margin:0;
   padding: 0;
+  .time-controllers {
+    width: 100%;
+    @include clearfix;
+    
+  }
+  //seekbars
+  .seekbars {
+    width: 100%;
+    background-color: #fafafa;
+    height: 3px;
+    margin: 0;
+    float: left;
+    position: relative;
+    z-index: 1;
+    transition: height 1s;
+    .seek-time {
+      width: 50%;
+      height: 100%;
+      background-color: orange;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      cursor: pointer;
+      &:before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        background-color: orange;
+        position: absolute;
+        right: -7px;
+        top: -5px;
+        border: 1px solid #fafafa;
+        z-index: 4;
+      }
+    }
+    .seek-buffer {
+      width: 80%;
+      height: 100%;
+      background-color: rgba(0,0,0,.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+  }
 }
 
-div.seek {
-  max-width: 80%;
-  height: 2px;
-  background-color: darken(orange, 20%);
-  width: 0px;
-  padding: 0;
-  margin: 0 0 5px;
-  position: relative;
-  //top: -8px;
-  z-index: -1;
+.controllers {
+  //display: none;
+  //opacity: 0;
+  width: 100%;
+  @include clearfix;
 
+  .controllers-left {
+    width: 80%;
+    float: left;
+    @include clearfix;
+    .playpause {
+
+    }
+
+    .backward {
+
+    }
+
+    .stop {
+
+    }
+
+    .forward {
+
+    }
+
+    .playbackrange {
+
+      .speed-menu {
+
+        span {
+
+        }
+
+      }
+
+    }
+
+    .muteunmute {
+
+    }
+
+    .volumebar {
+    background-color: #fafafa;
+    height: 6px;
+    margin: 0;
+    display: inline-block;
+    margin-bottom: 3px;
+    width: 70px;
+    .seek-volumebar {
+      width: 60%;
+      background-color: orange;
+      height: 100%;
+    }
+    }
+
+    .timeduration {
+      //float: right;
+
+    }
+
+  }
+  .controllers-right {
+    width: 20%;
+    float: right;
+    text-align: right;
+
+
+    .closecaptions {
+
+
+    }
+
+    .fullscreen {
+
+
+    }
+
+  }
 }
 
-p#text-track {
-  width: 739px;
-  max-width: 95%;
-  margin: 0 auto;
-  font-size: 14px;
-  line-height: 24px;
+// hover states
+
+.media-wrapper:hover .seekbars {
+  height: 6px;
+  transition: height 4ms;
 }
+
+.media-wrapper:hover .controllers {
+  opacity: 1;
+  transition: opacity 6ms;
+}
+
+// .player-wrapper-only {
+//   width: 739px;
+//   bottom: 5px;
+//   padding: 6px 20px 0px 20px;
+//   border-radius: 0px;
+//   transition: all 4ms ease-in;
+//   -webkit-transition: all 4ms ease-in;
+// }
+
+
+
+
 
 .controllers{
   //display: none;
@@ -92,4 +196,14 @@ p#text-track {
   top: 0px;
   left: 0px;
 
+}
+
+
+// text track
+p#text-track {
+  width: 739px;
+  max-width: 95%;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 24px;
 }

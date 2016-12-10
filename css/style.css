@@ -702,13 +702,13 @@ body, html {
   font-style: normal;
   src: url("../fonts/Open-Sans-700/Open-Sans-700.eot");
   src: url("../fonts/Open-Sans-700/Open-Sans-700.eot?#iefix") format("embedded-opentype"), url("../fonts/Open-Sans-700/Open-Sans-700.woff2") format("woff2"), url("../fonts/Open-Sans-700/Open-Sans-700.woff") format("woff"), url("../fonts/Open-Sans-700/Open-Sans-700.ttf") format("truetype"), url("../fonts/Open-Sans-700/Open-Sans-700.svg#OpenSans") format("svg"); }
-button, .playbackrange {
+button, .playbackrange, .timeduration {
   background: none;
   outline: none;
   border: none;
   padding: 5px 8px;
-  background-color: black;
-  color: #fafafa; }
+  color: #fafafa;
+  display: inline-block; }
 
 div.playbackrange {
   position: relative;
@@ -761,70 +761,104 @@ div.video-wrapper {
   max-width: 100%; }
 
 .media-wrapper {
-  position: relative; }
+  position: relative;
+  width: 739px;
+  margin: 0;
+  padding: 0;
+  margin: 0 auto; }
 
 .player-wrapper {
-  width: 550px;
-  max-width: 100%;
-  padding: 1.2em;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  margin: 0 auto;
+  font-size: 16px;
   position: absolute;
-  background: rgba(255, 255, 255, 0.9);
-  bottom: 1em;
-  left: 50%;
-  margin: 0 auto;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-  font-size: 0.6em;
+  bottom: 3px;
   z-index: 2147483647;
-  transition: all 4ms ease-in;
-  border-radius: 10px;
-  transition: all 4ms ease-in;
-  -webkit-transition: all 4ms ease-in; }
-  .player-wrapper::after {
-    clear: both;
-    content: "";
-    display: table; }
-
-.player-wrapper-only {
-  width: 739px;
-  bottom: 5px;
-  padding: 6px 20px 0px 20px;
-  border-radius: 0px;
-  transition: all 4ms ease-in;
-  -webkit-transition: all 4ms ease-in; }
-
-.time-controllers {
-  display: block; }
-  .time-controllers::after {
-    clear: both;
-    content: "";
-    display: table; }
-
-.timeduration {
-  float: right; }
-
-input.seektimeduration {
-  width: 80%;
-  margin: 0;
   padding: 0; }
+  .player-wrapper .time-controllers {
+    width: 100%; }
+    .player-wrapper .time-controllers::after {
+      clear: both;
+      content: "";
+      display: table; }
+  .player-wrapper .seekbars {
+    width: 100%;
+    background-color: #fafafa;
+    height: 3px;
+    margin: 0;
+    float: left;
+    position: relative;
+    z-index: 1;
+    -webkit-transition: height 1s;
+    transition: height 1s; }
+    .player-wrapper .seekbars .seek-time {
+      width: 50%;
+      height: 100%;
+      background-color: orange;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      cursor: pointer; }
+      .player-wrapper .seekbars .seek-time:before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        background-color: orange;
+        position: absolute;
+        right: -7px;
+        top: -5px;
+        border: 1px solid #fafafa;
+        z-index: 4; }
+    .player-wrapper .seekbars .seek-buffer {
+      width: 80%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2; }
 
-div.seek {
-  max-width: 80%;
-  height: 2px;
-  background-color: #996300;
-  width: 0px;
-  padding: 0;
-  margin: 0 0 5px;
-  position: relative;
-  z-index: -1; }
+.controllers {
+  width: 100%; }
+  .controllers::after {
+    clear: both;
+    content: "";
+    display: table; }
+  .controllers .controllers-left {
+    width: 80%;
+    float: left; }
+    .controllers .controllers-left::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .controllers .controllers-left .volumebar {
+      background-color: #fafafa;
+      height: 6px;
+      margin: 0;
+      display: inline-block;
+      margin-bottom: 3px;
+      width: 70px; }
+      .controllers .controllers-left .volumebar .seek-volumebar {
+        width: 60%;
+        background-color: orange;
+        height: 100%; }
+  .controllers .controllers-right {
+    width: 20%;
+    float: right;
+    text-align: right; }
 
-p#text-track {
-  width: 739px;
-  max-width: 95%;
-  margin: 0 auto;
-  font-size: 14px;
-  line-height: 24px; }
+.media-wrapper:hover .seekbars {
+  height: 6px;
+  -webkit-transition: height 4ms;
+  transition: height 4ms; }
+
+.media-wrapper:hover .controllers {
+  opacity: 1;
+  -webkit-transition: opacity 6ms;
+  transition: opacity 6ms; }
 
 .controllers-right {
   float: right; }
@@ -836,6 +870,13 @@ p#text-track {
   position: relative;
   top: 0px;
   left: 0px; }
+
+p#text-track {
+  width: 739px;
+  max-width: 95%;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 24px; }
 
 /**************************
 	FOOTER

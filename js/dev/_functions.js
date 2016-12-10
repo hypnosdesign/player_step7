@@ -4,7 +4,6 @@
 (function(){
   if (video.canPlayType){
     video.controls = false;
-    console.log(video.textTracks[0].mode);
   } else {
     video.controls = true;
     mainWrapper.innerHTML = "<p>It seems your browser doesn't support HTML5 video tag. Please update it!</p>";
@@ -16,13 +15,13 @@ playpauseBtn.addEventListener("click",
   function() {
     if(!video.paused){
       video.pause();
-      //playpauseBtn.innerHTML = "Play";
+
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-pause", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-play", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
     } else {
       video.play();
-      //playpauseBtn.innerHTML = "Pause";
+
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-play", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-pause", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-refresh");
