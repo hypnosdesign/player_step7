@@ -203,6 +203,28 @@ for (var i = 0; i < spanTrack.length; i++) {
     updatePlayer();
   }, false);
 }
+
+
+// color captions on the video current time
+
+
+video.addEventListener("timeupdate", function(){
+  var cues = video.textTracks[0].cues;
+  var htmlTrack = document.getElementById("text-track");
+  var spanTrack = htmlTrack.getElementsByTagName('span');
+    for (var i = 0; i < cues.length; i++) {
+      var cuesTime = cues[i].startTime;
+      var cuesEnd = cues[i].endTime;
+      var curTime = video.currentTime;
+        if( curTime >= cuesTime && curTime <= cuesEnd  ) {
+            spanTrack[i].style.color = 'orange';
+            } else {
+              spanTrack[i].style.color = 'inherit';
+            }
+    }
+}, false)
+
+
 /*code to run*/});
 
 // Playback Rate
@@ -282,3 +304,4 @@ fullscreenBtn.addEventListener('click', function() {
         fullscreenBtn.getElementsByTagName('i')[0].classList.remove("fa-compress");
     }
         }, false);
+  
