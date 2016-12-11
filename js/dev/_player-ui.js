@@ -1,5 +1,6 @@
 var mainWrapper     = document.querySelector('.main-wrapper');
 var videoWrapper    =  document.querySelector('.video-wrapper');
+var mediaWrapper    =  document.querySelector('.media-wrapper');
 var video           = document.querySelector('video.video');
 var playerWrapper   = document.querySelector('.player-wrapper');
 
@@ -35,4 +36,3 @@ var controllers     = document.querySelector('.controllers');
 
   // fullscreen
   var fullscreenBtn = document.querySelector('button.fullscreen');
-

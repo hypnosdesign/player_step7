@@ -1,5 +1,3 @@
-
-
 // Check if the Browser can play video.
 (function(){
   if (video.canPlayType){
@@ -44,8 +42,6 @@ timeControllers.addEventListener("click", function(e){
   width = parseInt(width);
   video.currentTime = (mouseX / width) * video.duration;
   updatePlayer();
-  console.log(mouseX);
-  console.log(width);
 }, false)
 
 // MUTE / UNMUTE / VOLUME
@@ -70,18 +66,21 @@ function() {
   }
 }, false);
 
-// VOLUME da vedere
+// VOLUME
 
-volumeBar.addEventListener("change",
-  function(){
+volumeBar.addEventListener("click",
+  function(e){
+  var mouseX = e.pageX - this.offsetLeft - videoWrapper.offsetParent.offsetLeft;
+  var width = window.getComputedStyle(this).width;
+  width = parseInt(width);
+  video.volume = (mouseX / width);
+  seekVolumeBar.style.width = (video.volume*100) + "%";
     if (video.volume === 0) {
-
       //"unMute";
       muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-off", "fw");
       muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-up", "fw");
       video.muted = true;
-    } else {
-      
+    } else {     
       //"Mute";
       muteunmuteBtn.getElementsByTagName('i')[0].classList.remove("fa", "fa-volume-up", "fw");
       muteunmuteBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-volume-off", "fw");
@@ -89,13 +88,13 @@ volumeBar.addEventListener("change",
     }
   }, false );
 
-// TIME FUNCTIONS da vedere
+// TIME FUNCTIONS
 
 video.addEventListener("timeupdate",
   function(){
     timeduration.innerHTML = getTime();
     if (video.ended) {
-      //playpauseBtn.innerHTML = "reload";
+      // "reload";
       playpauseBtn.getElementsByTagName('i')[0].classList.add("fa", "fa-refresh", "fw");
       playpauseBtn.getElementsByTagName('i')[0].classList.remove("fa-play", "fa-pause");
     }
@@ -201,17 +200,15 @@ for (var i = 0; i < spanTrack.length; i++) {
     var self = this;
     var startTime = self.getAttribute('data-time');
     video.currentTime = startTime;
-  });
-
+    updatePlayer();
+  }, false);
 }
-
 /*code to run*/});
 
 // Playback Rate
 
 playbackrange2xBtn.addEventListener('click',
-  function() { 
-    video.playbackRate = 2.0; }, false );
+  function() { video.playbackRate = 2.0; }, false );
 
 playbackrange1xBtn.addEventListener('click',
   function() { video.playbackRate = 1.0; }, false );
@@ -243,30 +240,45 @@ video.addEventListener('progress',
   }, false );
 
 
+var isFullscreen= false;
+fullscreenBtn.addEventListener('click', function() {
+    if(!isFullscreen){
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } 
+        else if (video.mozRequestFullScreen) {
+            mediaWrapper.mozRequestFullScreen(); // Firefox
+            videoWrapper.style.height = 100 + "%";
+            videoWrapper.style.width = 100 + "%";
+            video.style.width = 100 + "%";
+        } 
+        else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen(); // Chrome and Safari
+        }
+        isFullscreen=true;
+        mediaWrapper.classList.add('infullscreen');
+        videoWrapper.classList.add('infullscreen');
+        playerWrapper.style.width = 100 + "%";
+        console.log(this);
+        this.getElementsByTagName('i')[0].classList.remove("fa", "fa-expand", "fw");
+        this.getElementsByTagName('i')[0].classList.add("fa", "fa-compress", "fw");
+    }
+    else{
 
-// FULLSCREEN ENTER/EXIT
-fullscreenBtn.addEventListener("click",
-function() {
-  if (!document.fullscreenElement &&
-      !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement ) {
-    if (videoWrapper.requestFullscreen) {
-      videoWrapper.requestFullscreen();
-    } else if (videoWrapper.msRequestFullscreen) {
-      videoWrapper.msRequestFullscreen();
-    } else if (videoWrapper.mozRequestFullScreen) {
-      videoWrapper.mozRequestFullScreen();
-    } else if (videoWrapper.webkitRequestFullscreen) {
-      videoWrapper.webkitRequestFullscreen();
+        if(document.cancelFullScreen) {
+            document.cancelFullScreen();
+        } 
+        else if(document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } 
+        else if(document.webkitCancelFullScreen) {
+            document.webkitCancelFullScreen();
+        }
+        isFullscreen=false;
+        mediaWrapper.classList.remove('infullscreen');
+        videoWrapper.classList.remove('infullscreen');
+
+        fullscreenBtn.getElementsByTagName('i')[0].classList.add("fa-expand");
+        fullscreenBtn.getElementsByTagName('i')[0].classList.remove("fa-compress");
     }
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
-  }
-}, false );
+        }, false);

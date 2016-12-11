@@ -717,7 +717,7 @@ div.playbackrange {
 div.speed-menu {
   position: absolute;
   width: 100%;
-  bottom: 22px;
+  bottom: 42px;
   left: 0;
   display: block;
   opacity: 0;
@@ -763,7 +763,6 @@ div.video-wrapper {
 .media-wrapper {
   position: relative;
   width: 739px;
-  margin: 0;
   padding: 0;
   margin: 0 auto;
   max-width: 100%; }
@@ -774,6 +773,7 @@ div.video-wrapper {
   margin: 0 auto;
   font-size: 16px;
   position: absolute;
+  left: 0;
   bottom: 3px;
   z-index: 2147483647;
   padding: 0; }
@@ -823,6 +823,8 @@ div.video-wrapper {
       z-index: 2; }
 
 .controllers {
+  display: none;
+  opacity: 0;
   width: 100%; }
   .controllers::after {
     clear: both;
@@ -857,6 +859,7 @@ div.video-wrapper {
   transition: height 4ms; }
 
 .media-wrapper:hover .controllers {
+  display: block;
   opacity: 1;
   -webkit-transition: opacity 6ms;
   transition: opacity 6ms; }
@@ -879,6 +882,47 @@ p#text-track {
   font-size: 14px;
   line-height: 24px; }
 
+div.video-wrapper::full-screen,
+div.media-wrapper::full-screen {
+  width: 100%;
+  height: 100%; }
+
+::-moz-full-screen div.video-wrapper,
+::-moz-full-screen div.media-wrapper {
+  width: 100%;
+  height: 100%; }
+
+div.video-wrapper::-moz-full-screen,
+div.media-wrapper::-moz-full-screen {
+  width: 100%;
+  height: 100%; }
+
+div.video-wrapper::-webkit-full-screen,
+div.media-wrapper::-webkit-full-screen {
+  width: 100%;
+  height: 100%; }
+
+.infullscreen {
+  width: 100%;
+  height: 100%;
+  max-width: 100%; }
+
+/*hide controls from shadow DOM in webkit browsers*/
+/* hides controls only in fullscreen, but shows them in normal screen even if controls is set to false*/
+/*the most specific pseudo-element to target video controls on full screen*/
+::-webkit-media-controls,
+::-webkit-media-controls-panel {
+  display: none !important; }
+
+::-webkit-media-controls-enclosure {
+  display: none !important; }
+
+@media (max-width: 640px) {
+  .player-wrapper {
+    font-size: 0.6em; }
+
+  div.speed-menu {
+    bottom: 28px; } }
 /**************************
 	FOOTER
 ---------------------------
